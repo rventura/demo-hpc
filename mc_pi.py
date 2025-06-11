@@ -3,7 +3,7 @@ import numpy as np
 from mpi4py import MPI
 
 # Number of points per process
-N = 10**9
+N = 10**8
 
 # Setup OpenMPI
 comm = MPI.COMM_WORLD
@@ -41,4 +41,4 @@ if rank==0:
     t = time.time() - t0
     result = 4 * total_inside / (N*size)
     error = np.abs(result - np.pi)
-    print(f"My approximation of π is {result} (error is {error}.\nIt took {t} seconds.")
+    print(f"My approximation of π is {result} (error is {error}).\nIt took {t} seconds.")
