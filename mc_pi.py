@@ -1,4 +1,3 @@
-import time
 import numpy as np
 from mpi4py import MPI
 
@@ -12,7 +11,7 @@ rank = comm.Get_rank()
 
 if rank==0:
     # Master process
-    t0 = time.time()
+    t0 = MPI.Wtime()
     base = int(t0)
 else:
     # Slave process
@@ -38,7 +37,7 @@ total_inside = comm.reduce(n_inside, op=MPI.SUM, root=0)
 
 if rank==0:
     # Master process
-    t = time.time() - t0
+    t = MPI.Wtime() - t0
     result = 4 * total_inside / (N*size)
     error = np.abs(result - np.pi)
     print(f"My approximation of π is {result} (error is {error}).\nIt took {t} seconds.")
