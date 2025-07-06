@@ -21,11 +21,7 @@ source setup.sh
 ```
 in each shell before using the code.
 
-In Deucalion, before `source setup.sh` you need to load both Python and OpenMPI modules using
-```
-ml Python
-ml OpenMPI
-```
+*NOTE*: In Deucalion, both `./install.sh` and `source setup.sh` will load the Python and OpenMPI modules, so there is no need to load them manually.
 
 ## Usage
 
@@ -38,7 +34,7 @@ To execute the code on, e.g., 8 nodes, run
 ```
 mpirun -n 8 python3 mc_pi.py
 ```
-NOTE: on Deucalion, this code will not work in the login nodes; to run it, you'll need use SLURM (see below).
+*NOTE*: on Deucalion, this code will not work in the login nodes; to run it, you'll need use SLURM (see below).
 
 To execute the code using SLURM, e.g. in Deaucalion, submit a batch job using
 ```
@@ -53,7 +49,7 @@ Email: rodrigo.ventura (at) tecnico.ulisboa.pt\
 Linkedin: https://www.linkedin.com/in/rodrigo-ventura/
 
 Institute for Systems and Robotics | Lisbon\
-https://isr.tecnico.ulisboa.pt
+URL: https://isr.tecnico.ulisboa.pt
 
 Instituto Superior Técnico\
 University of Lisbon\
