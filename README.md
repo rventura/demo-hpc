@@ -2,7 +2,7 @@
 
 This repository features a simple demo on using High Performance Computing (HPC) techniques for approximating π using Monte Carlo, targeting the Deucalion HPC cluster.
 
-**NOTE**: this tutorial assumes the HPCvLAB 2025 project account number for ARM nodes. To use a different account, edit the `job.sh` file at the `--account` option, as well as in `-A` argument of the `srun` command below.
+**NOTE**: this tutorial assumes the HPCvLAB 2025 project account number for ARM nodes. To use a different account, edit the `job.sh` file at the `--account` option, as well as the `-A` argument of the `srun` command below.
 
 ## Requirements
 
@@ -67,7 +67,7 @@ squeue -u $USER
 ```
 Then, open the resulting `slurm-*.out` log file.
 
-You can play with parallelization by changing the number of tasks in `job.sh` to some more agressive value, e.g.
+You can play with parallelization by changing the number of tasks in `job.sh` to some more aggressive value, e.g.
 ```
 #SBATCH --ntasks=256
 ```
