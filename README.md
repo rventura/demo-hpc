@@ -40,6 +40,18 @@ mpirun -n 8 python3 mc_pi.py
 ```
 NOTE: on Deucalion, this code will not work in the login nodes; do run it, you'll need SLURM (see below).
 
+## Author
+
+Rodrigo Ventura
+Email: rodrigo.ventura (at) tecnico.ulisboa.pt
+
+Institute for Systems and Robotics | Lisbon
+https://isr.tecnico.ulisboa.pt
+
+Instituto Superior Técnico
+University of Lisbon
+Portugal
+
 To execute the code using SLURM, e.g. in Deaucalion, submit a batch job using
 ```
 sbatch -p normal-arm job.sh
