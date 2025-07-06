@@ -73,6 +73,10 @@ You can play with parallelization by changing the number of tasks in `job.sh` to
 ```
 In the output of `sinfo`, note how many nodes are automatically summoned to do the job,, in the rightmost column.
 
+## Miscellaneous
+
+For speed, `mc_pi.py` generates chunks of samples in vectors, exploiting computational efficiency of numpy. You can find out the best chunk size for your setup by using the included `calibrate_mc.py`program. It will generate chunks of different sizes and measures computation time. You should use the chunk size with smallest time, of course.
+
 ## Author
 
 Rodrigo Ventura\
