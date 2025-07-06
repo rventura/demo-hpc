@@ -1,3 +1,4 @@
+import time
 import numpy as np
 from mpi4py import MPI
 
@@ -12,7 +13,7 @@ rank = comm.Get_rank()
 if rank==0:
     # Master process
     t0 = MPI.Wtime()
-    base = int(t0)
+    base = int(time.time())
 else:
     # Slave process
     base = None
