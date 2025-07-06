@@ -2,11 +2,15 @@
 
 This repository features a simple demo on using High Performance Computing (HPC) techniques for approximating π using Monte Carlo, targeting the Deucalion HPC cluster.
 
+**NOTE**: this tutorial assumes the HPCvLAB 2025 project account number for ARM nodes. To use a different account, edit the `job.sh` file at the `--account` option, as well as in `-A` argument of the `srun` command below.
+
 ## Requirements
 
 The code targets a Linux machine and requires both Python3 and OpenMPI. In Deucalion you need to load both of this modules.
 
 ## Installation
+
+### on a local computer
 
 All required packages can be installed using a Python virtual environment. Alternatively you can skip the following steps if numpy and mpi4py are already installed system-wide.
 
@@ -21,9 +25,23 @@ source setup.sh
 ```
 in each shell before using the code.
 
-*NOTE*: In Deucalion, both `./install.sh` and `source setup.sh` will load the Python and OpenMPI modules, so there is no need to load them manually.
+### on Deucalion
+
+In what follows, we'll use an ARM partition. Since the login node architecture is x86, the installation must be done on an ARM node, using
+```
+srun -A f202500002hpcvlabistula -p dev-arm ./install.sh
+```
+
+**NOTE**: both `./install.sh` and `source setup.sh` will load the Python and OpenMPI modules, so there is no need to load them manually.
 
 ## Usage
+
+### on a local computer
+
+Before running anything, you'll need to load the virtual environment, once in each new shell:
+```
+source setup.sh
+```
 
 To execute the code on a single node, run
 ```
@@ -34,13 +52,26 @@ To execute the code on, e.g., 8 nodes, run
 ```
 mpirun -n 8 python3 mc_pi.py
 ```
-*NOTE*: on Deucalion, this code will not work in the login nodes; to run it, you'll need use SLURM (see below).
 
-To execute the code using SLURM, e.g. in Deaucalion, submit a batch job using
+### on Deucalion
+
+This code should not be run in the login nodes. Instead, you'll need use SLURM:
+
+To execute the code using SLURM, submit a batch job using
 ```
 sbatch -p normal-arm job.sh
 ```
-and then check for completion using `squeue -u $USER` and then open the resulting `slurm-*.out` log file.
+and then check for its completion using
+```
+squeue -u $USER
+```
+Then, open the resulting `slurm-*.out` log file.
+
+You can play with parallelization by changing the number of tasks in `job.sh` to some more agressive value, e.g.
+```
+#SBATCH --ntasks=256
+```
+In the output of `sinfo`, note how many nodes are automatically summoned to do the job,, in the rightmost column.
 
 ## Author
 
